@@ -1,20 +1,12 @@
 #include <stdio.h> // Include Standard I/O Library
 #include <math.h> // Include Math Library for ease of calling the power function
 void input(int* ai); // Input function prototype
-int check_armstrong(int num); // Condition function prototype
+void check_armstrong(int num); // Condition function prototype
 int main() // Main function
 {
     int a; // Init main var
     input(&a); // Pass address of main var to input
-    int chk=check_armstrong(a); // Create chk for use as a pseudo-boolean variable
-    if(chk==1) // If condition is true
-    {
-        printf("The number is an Armstrong number. \n");
-    }
-    else // If condition is false
-    {
-        printf("The number is not an Armstrong number. \n");
-    }
+    check_armstrong(a); // Call function to process and print a message accordingly
     return 0; // Terminate program
 }
 void input(int* ai) // Input function definition
@@ -22,7 +14,7 @@ void input(int* ai) // Input function definition
     printf("Enter the integer: \n"); // Request for input
     scanf("%d", ai);
 }
-int check_armstrong(int num) // Condition function definition
+void check_armstrong(int num) // Condition function definition
 {
     int ncl=num; // Create clone of num
     int sum=0; // Var for sum of the digits
@@ -35,11 +27,11 @@ int check_armstrong(int num) // Condition function definition
     }
     if(sum==ncl) // If the sum of the cubes of the digits is equal to the number
     {
-        return 1;
+        printf("The number is an Armstrong number. \n");
     }
     else
     {
-        return 0;
+        printf("The number is not an Armstrong number. \n");
     }
 
 }
