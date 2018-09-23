@@ -1,13 +1,13 @@
 #include <stdio.h> // Importing Standard IO Package
 #include <math.h> // Importing Math package for the square root function
-typedef struct complex
+struct complex
 {
 	double real;
 	double img;
-} comp;
+};
 void read(double* ai, double* bi, double* ci); // Input function prototype
-void compute(double a1, double b1, double c1,double* rt1, double* rt2, comp *i1, int* c); // Compute function prototype
-void output(double rto1, double rto2, comp io1, int c1); // Output function prototype
+void compute(double a1, double b1, double c1,double* rt1, double* rt2, struct complex *i1, int* c); // Compute function prototype
+void output(double rto1, double rto2, struct complex io1, int c1); // Output function prototype
 /*
 * main function receives no parameters:
 * Input parameters : none
@@ -19,7 +19,7 @@ int main() // Main function
 	double a, b, c; // Declaring variables to store co-efficients
 	read(&a,&b,&c); // Passing addresses of variables to read function
 	double rf1,rf2; // Init root vars
-	comp if1;
+	struct complex if1;
 	int cf1;
 	compute(a,b,c,&rf1,&rf2,&if1,&cf1);
     output(rf1,rf2,if1,cf1); // Passing addresses of vars to output function
@@ -46,7 +46,7 @@ void read(double* ai, double* bi, double* ci) // Accepts pointers to the main va
 * Output parameters : none
 * Return parameter : The value of the discriminant
 */
-void compute(double a1, double b1, double c1,double* rt1, double* rt2, comp *i1, int* c) // Accepts pointers to the main variables
+void compute(double a1, double b1, double c1,double* rt1, double* rt2, struct complex *i1, int* c) // Accepts pointers to the main variables
 {
 	double dcr=((b1)*(b1))-(4.0*(a1)*(c1)); // Calculates discriminant
     if(dcr==0.0) // If one root/two equal roots are present
@@ -76,7 +76,7 @@ void compute(double a1, double b1, double c1,double* rt1, double* rt2, comp *i1,
 * Output parameters Prints: Roots of the Quadratic Equation
 * Return parameter : none
 */
-void output(double rto1, double rto2, comp io1, int c1) // Outputs the required roots
+void output(double rto1, double rto2, struct complex io1, int c1) // Outputs the required roots
 {
     if(c1==0) // If one root/two equal  roots are present
     {
